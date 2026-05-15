@@ -550,6 +550,9 @@
       .chat-mini-btn { padding: 14px 24px; font-size: 0.88rem; }
     }
 
+    /* ===== FAQ Accordion ===== */
+    .active .faq-ans { max-height: 200px !important; }
+
     /* ===== Animations ===== */
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -633,12 +636,41 @@
     </div>
   </section>
 
-  <!-- 02 My Journey -->
-  <section class="section bg-cream" id="journey">
+  <!-- 02 Problem -->
+  <section class="section bg-cream">
     <div class="section-inner fade-in">
       <div class="section-header">
         <div class="section-num">02</div>
-        <div class="section-label">MY JOURNEY</div>
+        <div class="section-label">PROBLEM</div>
+      </div>
+      <h2 class="section-title">こんな課題やリスク、<br>心当たりはありませんか？</h2>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;">
+        <div style="padding:24px; background:var(--white); border-radius:8px; border:1px solid var(--gray-200);">
+          <h4 style="font-size:0.92rem; font-weight:600; margin-bottom:8px; color:var(--gray-800);">日本のアメックスに不便を感じる</h4>
+          <p style="font-size:0.82rem; color:var(--gray-500); line-height:1.8;">海外でのカード利用での手数料や、ステータスカードの活用に限界を感じている。</p>
+        </div>
+        <div style="padding:24px; background:var(--white); border-radius:8px; border:1px solid var(--gray-200);">
+          <h4 style="font-size:0.92rem; font-weight:600; margin-bottom:8px; color:var(--gray-800);">SSNがなくて諦めている</h4>
+          <p style="font-size:0.82rem; color:var(--gray-500); line-height:1.8;">米国に住歴がなく、SSNも持っていないため、米国カードは無理だと思い込んでいる。</p>
+        </div>
+        <div style="padding:24px; background:var(--white); border-radius:8px; border:1px solid var(--gray-200);">
+          <h4 style="font-size:0.92rem; font-weight:600; margin-bottom:8px; color:var(--gray-800);">ホテル系をお得に使いたい</h4>
+          <p style="font-size:0.82rem; color:var(--gray-500); line-height:1.8;">Hyatt、IHGなど、日本では発行できないホテル系カードをお得に利用したい。</p>
+        </div>
+        <div style="padding:24px; background:var(--white); border-radius:8px; border:1px solid var(--gray-200);">
+          <h4 style="font-size:0.92rem; font-weight:600; margin-bottom:8px; color:var(--gray-800);">情報が複雑でわからない</h4>
+          <p style="font-size:0.82rem; color:var(--gray-500); line-height:1.8;">制度・ルール・条件が入り組んでいて、うまく使えるかわからず踏み出せない。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Solution -->
+  <section class="section" id="journey">
+    <div class="section-inner fade-in">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div class="section-label">SOLUTION</div>
       </div>
       <div class="journey-row" style="margin-top: 40px;">
         <div class="journey-item">
@@ -676,11 +708,40 @@
     </div>
   </section>
 
-  <!-- 03 Achievement -->
+  <!-- 04 Value -->
+  <section class="section bg-cream">
+    <div class="section-inner fade-in">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div class="section-label">VALUE</div>
+      </div>
+      <h2 class="section-title">得られる未来・成果を具体化</h2>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;">
+        <div style="padding:28px; background:var(--green-dark); border-radius:8px; color:var(--white);">
+          <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:8px;">ビジネスクラスでの移動</h4>
+          <p style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.8;">ポイント活用で、普段は手が出ないビジネスクラスも現実的に。移動の体験が大きく変わります。</p>
+        </div>
+        <div style="padding:28px; background:var(--green-dark); border-radius:8px; color:var(--white);">
+          <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:8px;">一流ホテルに無料宿泊</h4>
+          <p style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.8;">Marriott、Hyattなど一流ホテルにポイントで宿泊。家族旅行の質が劇的に向上します。</p>
+        </div>
+        <div style="padding:28px; background:var(--green-dark); border-radius:8px; color:var(--white);">
+          <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:8px;">年間100万ポイント以上を獲得</h4>
+          <p style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.8;">正しい戦略と実行で、アフィリエイトリンクなしでも独力で年間100万ポイント規模が可能。</p>
+        </div>
+        <div style="padding:28px; background:var(--green-dark); border-radius:8px; color:var(--white);">
+          <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:8px;">フレキシブルポイントで有償航空券もお得に</h4>
+          <p style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.8;">特典航空券だけでなく、フレキシブルポイントの活用で有償航空券も割安に購入可能。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Achievement -->
   <section class="section" id="record">
     <div class="section-inner fade-in">
       <div class="section-header">
-        <div class="section-num">03</div>
+        <div class="section-num">05</div>
         <div class="section-label">ACHIEVEMENT</div>
       </div>
       <div class="achievement-grid" style="margin-top: 32px;">
@@ -728,11 +789,56 @@
     </div>
   </section>
 
-  <!-- 04 Voice -->
+  <!-- 06 Service -->
+  <section class="section bg-cream" id="service">
+    <div class="section-inner fade-in">
+      <div class="section-header" style="justify-content:center;">
+        <div class="section-num">06</div>
+        <div class="section-label">SERVICE</div>
+      </div>
+      <h2 class="section-title" style="text-align:center;">サポート内容・仕組み</h2>
+      <p style="text-align:center; font-size:0.88rem; color:var(--gray-500); margin-bottom:36px;">あなたの状況に合わせた最適な戦略を、一緒に考えます</p>
+      <div class="support-grid">
+        <div class="support-card">
+          <div class="support-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg></div>
+          <h4>現状のヒアリングと<br>戦略の整理</h4>
+          <p>ライフスタイルや目標に応じて、最適な戦略の方向性を整理します</p>
+        </div>
+        <div class="support-card">
+          <div class="support-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg></div>
+          <h4>カード選定と<br>申請戦略の設計</h4>
+          <p>最適なカードを選定し、申請タイミングや順序の戦略を設計します</p>
+        </div>
+        <div class="support-card">
+          <div class="support-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg></div>
+          <h4>ポイント獲得・活用<br>戦略の設計</h4>
+          <p>ポイントの貯め方から使い方まで、最大効率の戦略をアドバイス</p>
+        </div>
+        <div class="support-card">
+          <div class="support-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg></div>
+          <h4>ホテル・フライト活用<br>プランニング</h4>
+          <p>ポイントを使った宿泊やフライトの予約戦略、実現可能なプランを提案</p>
+        </div>
+        <div class="support-card">
+          <div class="support-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg></div>
+          <h4>ルール・制度の<br>最新情報提供</h4>
+          <p>常に変わるカード会社のルールや制度について、最新情報をアップデート</p>
+        </div>
+        <div class="support-card">
+          <div class="support-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg></div>
+          <h4>継続的な見直しと<br>戦略アップデート</h4>
+          <p>状況の変化に合わせて、継続的に戦略を見直しアドバイスします</p>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:28px; font-size:0.82rem; color:var(--gold); font-weight:600;">人数限定でお得にご案内中</p>
+    </div>
+  </section>
+
+  <!-- 07 Voice -->
   <section class="section voice-section" id="voice">
     <div class="section-inner fade-in">
       <div class="section-header" style="justify-content:center;">
-        <div class="section-num">04</div>
+        <div class="section-num">07</div>
         <div class="section-label">VOICE</div>
       </div>
       <h2 class="section-title" style="text-align:center;">読者・相談者の声</h2>
@@ -804,58 +910,94 @@
     </div>
   </section>
 
-  <!-- 05 Support -->
-  <section class="section" id="service">
+  <!-- 08 Comparison -->
+  <section class="section bg-cream" id="comparison">
     <div class="section-inner fade-in">
       <div class="section-header" style="justify-content:center;">
-        <div class="section-num">05</div>
-        <div class="section-label">SUPPORT</div>
+        <div class="section-num">08</div>
+        <div class="section-label">COMPARISON</div>
       </div>
-      <h2 class="section-title" style="text-align:center;">サポート内容</h2>
-      <div class="support-grid" style="margin-top: 36px;">
-        <div class="support-card">
-          <div class="support-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
-          </div>
-          <h4>現状のヒアリングと<br>戦略の整理</h4>
-          <p>ライフスタイルや目標に応じて、最適な戦略の方向性を整理します</p>
+      <h2 class="section-title" style="text-align:center;">他サービスとの違い・選ばれる理由</h2>
+      <table style="width:100%; border-collapse:collapse; font-size:0.85rem; background:var(--white); border-radius:8px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.06); margin-top:32px;">
+        <thead>
+          <tr>
+            <th style="padding:14px 16px; background:var(--green-dark); color:var(--white); font-weight:600; text-align:left;">比較項目</th>
+            <th style="padding:14px 16px; background:var(--gold); color:var(--white); font-weight:600; text-align:center;">Elite Points Academy</th>
+            <th style="padding:14px 16px; background:var(--green-dark); color:var(--white); font-weight:600; text-align:center;">ブログ・SNS</th>
+            <th style="padding:14px 16px; background:var(--green-dark); color:var(--white); font-weight:600; text-align:center;">他社コンサル</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:12px 16px; border-bottom:1px solid var(--gray-100); font-weight:500;">Amex・Chase両方の実績</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); background:var(--gold-pale); font-weight:600; color:var(--green-dark);">&#10003;</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); color:var(--gray-300);">片方のみ</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); color:var(--gray-400);">限定的</td></tr>
+          <tr><td style="padding:12px 16px; border-bottom:1px solid var(--gray-100); font-weight:500;">SSNなしからの攻略メソッド</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); background:var(--gold-pale); font-weight:600; color:var(--green-dark);">&#10003;</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); color:var(--gray-300);">&mdash;</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); color:var(--gray-400);">一部</td></tr>
+          <tr><td style="padding:12px 16px; border-bottom:1px solid var(--gray-100); font-weight:500;">個別状況に合わせた戦略</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); background:var(--gold-pale); font-weight:600; color:var(--green-dark);">&#10003;</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); color:var(--gray-300);">&mdash;</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); color:var(--green-dark);">&#10003;</td></tr>
+          <tr><td style="padding:12px 16px; border-bottom:1px solid var(--gray-100); font-weight:500;">アフィリエイトなしの中立性</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); background:var(--gold-pale); font-weight:600; color:var(--green-dark);">&#10003;</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); color:var(--gray-300);">&mdash;</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); color:var(--gray-400);">不明</td></tr>
+          <tr><td style="padding:12px 16px; font-weight:500;">継続的なルール更新フォロー</td><td style="padding:12px; text-align:center; background:var(--gold-pale); font-weight:600; color:var(--green-dark);">&#10003;</td><td style="padding:12px; text-align:center; color:var(--gray-300);">自己責任</td><td style="padding:12px; text-align:center; color:var(--gray-400);">一部</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 09 FAQ -->
+  <section class="section" id="faq">
+    <div class="section-inner fade-in">
+      <div class="section-header" style="justify-content:center;">
+        <div class="section-num">09</div>
+        <div class="section-label">FAQ</div>
+      </div>
+      <h2 class="section-title" style="text-align:center;">よくある質問</h2>
+      <div style="margin-top:32px; display:flex; flex-direction:column; gap:12px;">
+        <div style="border:1px solid var(--gray-200); border-radius:8px; overflow:hidden; background:var(--white);">
+          <div style="padding:18px 22px; font-size:0.92rem; font-weight:600; cursor:pointer;" onclick="this.parentElement.classList.toggle('active')">米国に住んだことがなくてもカードを作れますか？</div>
+          <div style="max-height:0; overflow:hidden; transition:max-height 0.3s;" class="faq-ans"><div style="padding:0 22px 18px; font-size:0.85rem; color:var(--gray-600); line-height:1.9;">はい、SSNがなくても米国クレジットカードを取得する方法があります。日本のAmex実績を活用したGlobal Transferなど、在米歴ゼロの方でも実践できる戦略があります。</div></div>
         </div>
-        <div class="support-card">
-          <div class="support-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
-          </div>
-          <h4>カード選定と<br>申請戦略の設計</h4>
-          <p>最適なカードを選定し、申請タイミングや順序の戦略を設計します</p>
+        <div style="border:1px solid var(--gray-200); border-radius:8px; overflow:hidden; background:var(--white);">
+          <div style="padding:18px 22px; font-size:0.92rem; font-weight:600; cursor:pointer;" onclick="this.parentElement.classList.toggle('active')">相談はどのような形式で行われますか？</div>
+          <div style="max-height:0; overflow:hidden; transition:max-height 0.3s;" class="faq-ans"><div style="padding:0 22px 18px; font-size:0.85rem; color:var(--gray-600); line-height:1.9;">オンライン（Zoom）での個別相談です。初回ヒアリングで現状と目標をお伺いし、あなた専用の戦略プランをご提案します。</div></div>
         </div>
-        <div class="support-card">
-          <div class="support-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
-          </div>
-          <h4>ポイント獲得・活用<br>戦略の設計</h4>
-          <p>ポイントの貯め方から使い方まで、最大効率の戦略をアドバイス</p>
+        <div style="border:1px solid var(--gray-200); border-radius:8px; overflow:hidden; background:var(--white);">
+          <div style="padding:18px 22px; font-size:0.92rem; font-weight:600; cursor:pointer;" onclick="this.parentElement.classList.toggle('active')">カードの審査・発行を保証するものですか？</div>
+          <div style="max-height:0; overflow:hidden; transition:max-height 0.3s;" class="faq-ans"><div style="padding:0 22px 18px; font-size:0.85rem; color:var(--gray-600); line-height:1.9;">いいえ、あくまで戦略のアドバイスとサポートです。最終的な審査はカード会社の判断となります。</div></div>
         </div>
-        <div class="support-card">
-          <div class="support-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
-          </div>
-          <h4>ホテル・フライト活用<br>プランニング</h4>
-          <p>ポイントを使った宿泊やフライトの予約戦略、実現可能なプランを提案</p>
+        <div style="border:1px solid var(--gray-200); border-radius:8px; overflow:hidden; background:var(--white);">
+          <div style="padding:18px 22px; font-size:0.92rem; font-weight:600; cursor:pointer;" onclick="this.parentElement.classList.toggle('active')">金融商品の仲介やアフィリエイトですか？</div>
+          <div style="max-height:0; overflow:hidden; transition:max-height 0.3s;" class="faq-ans"><div style="padding:0 22px 18px; font-size:0.85rem; color:var(--gray-600); line-height:1.9;">いいえ、ポイ活のアドバイスサービスです。アフィリエイトリンクなしで、独力で実現可能な手法を実績からアドバイスします。</div></div>
         </div>
-        <div class="support-card">
-          <div class="support-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
-          </div>
-          <h4>ルール・制度の<br>最新情報提供</h4>
-          <p>常に変わるカード会社のルールや制度について、最新情報をアップデート</p>
-        </div>
-        <div class="support-card">
-          <div class="support-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" /></svg>
-          </div>
-          <h4>継続的な見直しと<br>戦略アップデート</h4>
-          <p>状況の変化に合わせて、継続的に戦略を見直しアドバイスします</p>
+        <div style="border:1px solid var(--gray-200); border-radius:8px; overflow:hidden; background:var(--white);">
+          <div style="padding:18px 22px; font-size:0.92rem; font-weight:600; cursor:pointer;" onclick="this.parentElement.classList.toggle('active')">英語が不安ですが大丈夫ですか？</div>
+          <div style="max-height:0; overflow:hidden; transition:max-height 0.3s;" class="faq-ans"><div style="padding:0 22px 18px; font-size:0.85rem; color:var(--gray-600); line-height:1.9;">場合によっては言語の壁を超えるサポートも行います。手続き上の英語についてもフォローしますので、ご安心ください。</div></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 10 Closing -->
+  <section class="section bg-cream">
+    <div class="section-inner fade-in" style="text-align:center;">
+      <div class="section-header" style="justify-content:center;">
+        <div class="section-num">10</div>
+        <div class="section-label">CONSULTATION</div>
+      </div>
+      <h2 class="section-title">面談のご案内</h2>
+      <p style="font-size:0.88rem; color:var(--gray-500); line-height:1.9; margin-bottom:32px;">まずはオンラインで現状をお聞かせください。<br>あなたの状況に合った最適な戦略の方向性を、一緒に整理します。</p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; text-align:center; margin-bottom:32px;">
+        <div style="padding:24px 16px; background:var(--white); border-radius:8px; border:1px solid var(--gray-200);">
+          <div style="font-size:1.5rem; margin-bottom:8px;">1</div>
+          <h4 style="font-size:0.88rem; font-weight:600; margin-bottom:6px;">ヒアリング</h4>
+          <p style="font-size:0.78rem; color:var(--gray-500);">現状・目標・お悩みを丁寧にお伺いします</p>
+        </div>
+        <div style="padding:24px 16px; background:var(--white); border-radius:8px; border:1px solid var(--gray-200);">
+          <div style="font-size:1.5rem; margin-bottom:8px;">2</div>
+          <h4 style="font-size:0.88rem; font-weight:600; margin-bottom:6px;">戦略の方向性を整理</h4>
+          <p style="font-size:0.78rem; color:var(--gray-500);">あなたに合ったカード・ポイント戦略をご提案</p>
+        </div>
+        <div style="padding:24px 16px; background:var(--white); border-radius:8px; border:1px solid var(--gray-200);">
+          <div style="font-size:1.5rem; margin-bottom:8px;">3</div>
+          <h4 style="font-size:0.88rem; font-weight:600; margin-bottom:6px;">次のステップをご案内</h4>
+          <p style="font-size:0.78rem; color:var(--gray-500);">ご納得いただけた場合のみ継続サポートへ</p>
+        </div>
+      </div>
+      <p style="font-size:0.82rem; color:var(--gray-400);">所要時間：約30〜60分 / オンライン（Zoom）/ 無理な勧誘は一切ありません</p>
     </div>
   </section>
 
