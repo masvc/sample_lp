@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Points Academy | 米国クレカ活用支援サービス</title>
+  <meta name="description" content="SSNなし・在米歴ゼロでも米国クレジットカードを攻略。Amex・Chase・ホテル系ポイントの個別戦略サポート。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-dark: #2c4a3e;
+      --green-mid: #3d6b5a;
+      --green-light: #5a8f7a;
+      --green-pale: #e8f0ec;
+      --gold: #b8964e;
+      --gold-light: #d4b878;
+      --gold-pale: #f5ecd7;
+      --white: #ffffff;
+      --off-white: #fafaf7;
+      --gray-50: #f8f8f6;
+      --gray-100: #f0efe9;
+      --gray-200: #e0ddd4;
+      --gray-300: #c8c4b8;
+      --gray-400: #9e9a8e;
+      --gray-500: #7a766c;
+      --gray-600: #5c5850;
+      --gray-700: #3e3b35;
+      --gray-800: #2a2824;
+      --gray-900: #1a1916;
+      --font-serif: 'Noto Serif JP', serif;
+      --font-sans: 'Noto Sans JP', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--gray-800);
+      background: var(--white);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== Header / Navigation ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-200);
+      transition: box-shadow 0.3s;
+    }
+    .header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      line-height: 1.3;
+    }
+    .logo small {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: var(--gray-500);
+      letter-spacing: 0.05em;
+    }
+    .nav { display: flex; align-items: center; gap: 28px; }
+    .nav a {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav a:hover { color: var(--green-dark); }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: var(--green-dark);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+    .btn-cta-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-cta-gold:hover { background: var(--gold-light); }
+    .btn-cta-outline {
+      background: transparent;
+      color: var(--green-dark);
+      border: 1.5px solid var(--green-dark);
+    }
+    .btn-cta-outline:hover { background: var(--green-dark); color: var(--white); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--gray-700); transition: 0.3s; }
+
+    /* ===== Hero / First View ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      margin-top: 72px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(44,74,62,0.92) 0%, rgba(44,74,62,0.75) 50%, rgba(44,74,62,0.5) 100%),
+                  url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80') center/cover no-repeat;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-text h1 {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+    .hero-text h1 span { color: var(--gold-light); }
+    .hero-text p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 2;
+      margin-bottom: 40px;
+    }
+    .hero-image {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== Section Common ===== */
+    .section {
+      padding: 100px 24px;
+    }
+    .section-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .section-wide {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .section-number {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gray-200);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--gray-500);
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+    .bg-cream { background: var(--off-white); }
+    .bg-green { background: var(--green-dark); color: var(--white); }
+    .bg-green .section-title { color: var(--white); }
+    .bg-green .section-subtitle { color: rgba(255,255,255,0.7); }
+
+    /* ===== 01 Story Section ===== */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .story-image {
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    .story-image img { width: 100%; height: 100%; object-fit: cover; }
+    .story-content h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      color: var(--gray-800);
+    }
+    .story-content p {
+      font-size: 0.92rem;
+      color: var(--gray-600);
+      line-height: 2;
+      margin-bottom: 16px;
+    }
+
+    /* ===== 02 Problem Section ===== */
+    .problem-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .problem-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .problem-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    .problem-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
+      background: var(--green-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .problem-icon svg { width: 28px; height: 28px; color: var(--green-dark); }
+    .problem-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--gray-800);
+    }
+    .problem-card p {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      line-height: 1.8;
+    }
+
+    /* ===== 03 Solution / Journey ===== */
+    .journey-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+    .journey-steps::before {
+      content: '';
+      position: absolute;
+      top: 48px;
+      left: 16.67%;
+      right: 16.67%;
+      height: 2px;
+      background: var(--gold-light);
+    }
+    .journey-step {
+      text-align: center;
+      position: relative;
+    }
+    .step-number {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 24px;
+      background: var(--white);
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+    }
+    .step-number span { display: block; line-height: 1.3; }
+    .step-number small { display: block; font-size: 0.7rem; color: var(--gray-500); font-family: var(--font-sans); }
+    .journey-step h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--gray-800);
+    }
+    .journey-step p {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      line-height: 1.8;
+    }
+    .journey-step ul {
+      list-style: none;
+      text-align: left;
+      padding: 16px 0;
+    }
+    .journey-step ul li {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .journey-step ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* ===== 04 Value / Benefits ===== */
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .value-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 36px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .value-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: rgba(184,150,78,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .value-icon svg { width: 24px; height: 24px; color: var(--gold-light); }
+    .value-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+    .value-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+    }
+
+    /* ===== 05 Track Record ===== */
+    .record-highlight {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 48px;
+      background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+      border-radius: 12px;
+      color: var(--white);
+    }
+    .record-highlight h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    .record-stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 28px;
+    }
+    .record-stat .num {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .record-stat .label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.7);
+      margin-top: 8px;
+    }
+    .record-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .record-card {
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .record-card-img {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+    .record-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .record-card:hover .record-card-img img { transform: scale(1.05); }
+    .record-card-body {
+      padding: 16px;
+    }
+    .record-card-body h5 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .record-card-body p {
+      font-size: 0.78rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+
+    /* ===== 06 Service Details ===== */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .service-card-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      background: var(--gold-pale);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .service-card-icon svg { width: 28px; height: 28px; color: var(--gold); }
+    .service-card h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .service-card p {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      line-height: 1.8;
+    }
+
+    /* ===== 07 Testimonials ===== */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 36px 28px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 16px;
+      left: 24px;
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      color: var(--gold-light);
+      line-height: 1;
+      opacity: 0.4;
+    }
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      line-height: 1.9;
+      margin-bottom: 20px;
+      padding-top: 16px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid var(--gray-100);
+      padding-top: 16px;
+    }
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+    .testimonial-author-info .name { font-size: 0.85rem; font-weight: 600; }
+    .testimonial-author-info .detail { font-size: 0.75rem; color: var(--gray-400); }
+
+    /* ===== 08 Comparison ===== */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 16px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .comparison-table thead th {
+      background: var(--green-dark);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .comparison-table thead th:first-child {
+      text-align: left;
+    }
+    .comparison-table thead th.highlight {
+      background: var(--gold);
+    }
+    .comparison-table tbody td:first-child {
+      text-align: left;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+    .comparison-table tbody td.highlight {
+      background: var(--gold-pale);
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+    .check { color: var(--green-mid); font-weight: bold; }
+    .cross { color: var(--gray-300); }
+
+    /* ===== 09 FAQ ===== */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .faq-question {
+      padding: 20px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: var(--gray-50); }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-left: 16px;
+      transition: transform 0.3s;
+    }
+    .faq-item.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 24px 20px;
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      line-height: 1.9;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+    }
+
+    /* ===== 10 Closing CTA ===== */
+    .closing {
+      text-align: center;
+      padding: 100px 24px;
+      background: linear-gradient(180deg, var(--green-dark) 0%, #1e3a30 100%);
+      color: var(--white);
+    }
+    .closing h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .closing p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.9;
+    }
+    .closing .btn-cta-gold {
+      font-size: 1rem;
+      padding: 18px 48px;
+      border-radius: 6px;
+    }
+    .cta-notes {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 20px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .cta-notes span::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* ===== Legal Notice ===== */
+    .legal {
+      padding: 40px 24px;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-200);
+    }
+    .legal-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .legal h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--gray-700);
+    }
+    .legal-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 32px;
+    }
+    .legal-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: var(--gray-500);
+      line-height: 1.7;
+    }
+    .legal-item svg {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      color: var(--gray-400);
+      margin-top: 2px;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      padding: 40px 24px;
+      background: var(--gray-900);
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .nav a:not(.btn-cta) { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-text h1 { font-size: 2.2rem; }
+      .hero-image { max-width: 500px; }
+      .story-grid { grid-template-columns: 1fr; gap: 32px; }
+      .record-cards { grid-template-columns: repeat(2, 1fr); }
+      .journey-steps::before { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner { height: 60px; }
+      .hero { margin-top: 60px; min-height: auto; padding: 60px 0; }
+      .hero-text h1 { font-size: 1.8rem; }
+      .section { padding: 64px 20px; }
+      .section-title { font-size: 1.5rem; }
+      .problem-cards { grid-template-columns: 1fr; }
+      .journey-steps { grid-template-columns: 1fr; gap: 40px; }
+      .value-grid { grid-template-columns: 1fr; }
+      .service-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .record-cards { grid-template-columns: 1fr; }
+      .record-stats { flex-direction: column; gap: 24px; }
+      .comparison-table { font-size: 0.78rem; }
+      .comparison-table th, .comparison-table td { padding: 12px 10px; }
+      .legal-items { grid-template-columns: 1fr; }
+      .closing h2 { font-size: 1.5rem; }
+      .cta-notes { flex-direction: column; gap: 8px; }
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 20px 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* ===== Password Gate ===== */
+    .pw-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .pw-gate.hidden { display: none; }
+    .pw-box {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 48px 40px;
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .pw-box h2 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+    .pw-box p {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      margin-bottom: 24px;
+    }
+    .pw-box input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 16px;
+    }
+    .pw-box input:focus { border-color: var(--gold); }
+    .pw-box .pw-error {
+      color: #dc2626;
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .pw-box button {
+      width: 100%;
+      padding: 14px;
+      background: var(--green-dark);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: background 0.2s;
+    }
+    .pw-box button:hover { background: var(--green-mid); }
+    .pw-logo-text {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 32px;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Password Gate -->
+  <div class="pw-gate" id="pwGate">
+    <div class="pw-logo-text">ELITE POINTS ACADEMY</div>
+    <div class="pw-box">
+      <h2>限定公開ページ</h2>
+      <p>このページは招待制です。<br>パスワードを入力してご覧ください。</p>
+      <input type="password" id="pwInput" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')checkPw()">
+      <div class="pw-error" id="pwError">パスワードが正しくありません</div>
+      <button onclick="checkPw()">ページを表示する</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="logo">
+        Johnの米国カード・ポイント相談室
+        <small>在米日本人・米国進出予定者のための個別戦略サポート</small>
+      </div>
+      <nav class="nav">
+        <a href="#story">Johnのストーリー</a>
+        <a href="#record">実績</a>
+        <a href="#service">サポート内容</a>
+        <a href="#voice">相談者の声</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#contact" class="btn-cta">個別相談を申し込む</a>
+      </nav>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#story" onclick="closeMenu()">Johnのストーリー</a>
+      <a href="#record" onclick="closeMenu()">実績</a>
+      <a href="#service" onclick="closeMenu()">サポート内容</a>
+      <a href="#voice" onclick="closeMenu()">相談者の声</a>
+      <a href="#faq" onclick="closeMenu()">よくある質問</a>
+      <a href="#contact" class="btn-cta" style="text-align:center;" onclick="closeMenu()">個別相談を申し込む</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>なぜ、<span>米国カード</span>と<br><span>ポイント活用</span>は<br>海外生活を変えるのか。</h1>
+        <p>Amex・Chase・ホテル系ポイントを実践してきたJohnが、<br>在米日本人・米国進出予定者に向けて、<br>個別状況に合わせた活用戦略をサポートします。</p>
+        <a href="#contact" class="btn-cta-gold btn-cta">Johnに相談する <span>&rarr;</span></a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="John - 米国カード戦略コンサルタント" style="object-position: center 20%;">
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 Story -->
+  <section class="section" id="story">
+    <div class="section-inner fade-in">
+      <div class="story-grid">
+        <div class="story-image">
+          <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&q=80" alt="ニューヨークの街並み">
+        </div>
+        <div class="story-content">
+          <div class="section-number">01</div>
+          <div class="section-label">STORY</div>
+          <h3>日本のポイ活から始まり、<br>米国カードの世界へ。</h3>
+          <p>もともとは、日本でのポイ活からスタートしました。効率よくポイントを貯める楽しさに触れされる一方で、海外生活の中で選択肢が増える中で、「もっと自由に、もっと価値ある体験につなげる活用方法があるのでは？」と感じるようになりました。</p>
+          <p>渡米後、AmexやChase、ホテル系ポイントの可能性に出会い、試行錯誤を重ねてきました。その過程で得た知識と経験を、同じように悩む方々の力にしていきたいと思い、個別相談を始めました。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Problem -->
+  <section class="section bg-cream" id="problem">
+    <div class="section-inner fade-in">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="section-number">02</div>
+        <div class="section-label" style="justify-content:center;">PROBLEM</div>
+        <h2 class="section-title">こんなお悩みはありませんか？</h2>
+      </div>
+      <div class="problem-cards">
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+          </div>
+          <h4>米国クレカの仕組みが<br>わからない</h4>
+          <p>制度・ルール・条件が複雑で、日本との違いに戸惑い、正しく理解するのが難しい</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+          </div>
+          <h4>SSNがなくて<br>諦めている</h4>
+          <p>米国に住んだことがなく、SSNも持っていないため、米国カードは無理だと思い込んでいる</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18v-.008zm-12 0h.008v.008H6v-.008z" /></svg>
+          </div>
+          <h4>ポイントの活用法が<br>見えない</h4>
+          <p>せっかく貯めたポイントをどう使えば最大の価値を引き出せるのか、最適解がわからない</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Solution / Journey -->
+  <section class="section" id="solution">
+    <div class="section-inner fade-in">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="section-number">03</div>
+        <div class="section-label" style="justify-content:center;">SOLUTION</div>
+        <h2 class="section-title">米国カード戦略の全体像</h2>
+        <p class="section-subtitle">SSNがない在米歴がない人でも米国クレカを攻略していくことが可能。<br>主な攻略ステップを伴走型でサポートしていきます。</p>
+      </div>
+      <div class="journey-steps">
+        <div class="journey-step">
+          <div class="step-number"><span>Step 1<small>基礎構築</small></span></div>
+          <h4>Amex Global Transfer<br>で第一歩</h4>
+          <ul>
+            <li>日本のAmex実績を活用</li>
+            <li>US住所・電話番号の取得</li>
+            <li>銀行口座のセットアップ</li>
+          </ul>
+          <p style="color:var(--gold); font-weight:600; font-size:0.82rem;">目標：最初の米国Amexを獲得</p>
+        </div>
+        <div class="journey-step">
+          <div class="step-number"><span>Step 2<small>基礎拡張</small></span></div>
+          <h4>ITIN取得と<br>Chase口座開設</h4>
+          <ul>
+            <li>ITIN（個人納税者番号）の取得</li>
+            <li>Chase Checking口座の開設</li>
+            <li>クレヒスの構築</li>
+          </ul>
+          <p style="color:var(--gold); font-weight:600; font-size:0.82rem;">目標：2枚目以降の布石</p>
+        </div>
+        <div class="journey-step">
+          <div class="step-number"><span>Step 3<small>応用編</small></span></div>
+          <h4>Chase エコシステムへの<br>参入</h4>
+          <ul>
+            <li>パーソナル&ビジネスカード攻略</li>
+            <li>高還元URポイント獲得</li>
+            <li>ホテル/航空提携カード</li>
+          </ul>
+          <p style="color:var(--gold); font-weight:600; font-size:0.82rem;">目標：ポイント最大化</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Value / Benefits -->
+  <section class="section bg-green" id="value">
+    <div class="section-inner fade-in">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="section-number" style="color:rgba(255,255,255,0.15);">04</div>
+        <div class="section-label" style="justify-content:center;">VALUE</div>
+        <h2 class="section-title">得られる未来・成果</h2>
+        <p class="section-subtitle">米国カード戦略を実践することで、海外生活の質が大きく変わります</p>
+      </div>
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
+          </div>
+          <div>
+            <h4>ビジネスクラスでの移動</h4>
+            <p>ポイント活用で、普段は手が出ないビジネスクラスも現実的に。移動の体験が大きく変わります。</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3H21m-3.75 3H21" /></svg>
+          </div>
+          <div>
+            <h4>世界中の一流ホテルに無料宿泊</h4>
+            <p>Marriott、Hyattなど一流ホテルにポイントで宿泊。家族旅行の質が劇的に向上します。</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <div>
+            <h4>年間100万ポイント以上を獲得</h4>
+            <p>正しい戦略と実行で、アフィリエイトリンクなしでも独力で年間100万ポイント規模の獲得が可能。</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+          </div>
+          <div>
+            <h4>言語の壁を超えるサポート</h4>
+            <p>英語での手続きに不安がある方も安心。場合によっては言語の壁を超えるサポートも提供。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Track Record -->
+  <section class="section" id="record">
+    <div class="section-wide fade-in">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="section-number">05</div>
+        <div class="section-label" style="justify-content:center;">ACHIEVEMENT</div>
+        <h2 class="section-title">Johnの実践と実績</h2>
+      </div>
+      <div class="record-highlight">
+        <h3>SSNなし・米国居住歴ゼロの純ジャパから、<br>米国カード10枚以上を取得</h3>
+        <div class="record-stats">
+          <div class="record-stat">
+            <div class="num">1,500,000+</div>
+            <div class="label">年間獲得ポイント相当</div>
+          </div>
+          <div class="record-stat">
+            <div class="num">10+</div>
+            <div class="label">保有米国カード数</div>
+          </div>
+          <div class="record-stat">
+            <div class="num">2023〜</div>
+            <div class="label">米国カード実践歴</div>
+          </div>
+        </div>
+      </div>
+      <div class="record-cards">
+        <div class="record-card">
+          <div class="record-card-img">
+            <img src="https://images.unsplash.com/photo-1540339832862-474599807836?w=600&q=80" alt="空港ラウンジ">
+          </div>
+          <div class="record-card-body">
+            <h5>ラウンジでのくつろぎ</h5>
+            <p>空港ラウンジを日常に。移動の体験が大きく変わります。</p>
+          </div>
+        </div>
+        <div class="record-card">
+          <div class="record-card-img">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&q=80" alt="ビジネスクラス">
+          </div>
+          <div class="record-card-body">
+            <h5>ビジネスクラスの体験</h5>
+            <p>ポイント活用で、ビジネスクラスも現実的に。</p>
+          </div>
+        </div>
+        <div class="record-card">
+          <div class="record-card-img">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="ホテル無料宿泊">
+          </div>
+          <div class="record-card-body">
+            <h5>ホテル無料宿泊</h5>
+            <p>世界中の一流ホテルにポイントで宿泊する喜び。</p>
+          </div>
+        </div>
+        <div class="record-card">
+          <div class="record-card-img">
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=600&q=80" alt="情報の整理と発信">
+          </div>
+          <div class="record-card-body">
+            <h5>情報の整理と発信</h5>
+            <p>実績をもとに、分かりやすく情報を発信。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Service Details -->
+  <section class="section bg-cream" id="service">
+    <div class="section-inner fade-in">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="section-number">06</div>
+        <div class="section-label" style="justify-content:center;">SUPPORT</div>
+        <h2 class="section-title">サポート内容</h2>
+        <p class="section-subtitle">あなたの状況に合わせた最適な戦略を、一緒に考えます</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
+          </div>
+          <h4>現状のヒアリングと<br>戦略の整理</h4>
+          <p>ライフスタイルや目標に応じて、最適な戦略の方向性を整理します</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
+          </div>
+          <h4>カード選定と<br>申請戦略の設計</h4>
+          <p>最適なカードを選定し、申請タイミングや順序の戦略を設計します</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
+          </div>
+          <h4>ポイント獲得・活用<br>戦略の設計</h4>
+          <p>ポイントの貯め方から使い方まで、最大効率の戦略をアドバイス</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
+          </div>
+          <h4>ホテル・フライト活用<br>プランニング</h4>
+          <p>ポイントを使った宿泊やフライトの予約戦略、実現可能なプランを提案</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+          </div>
+          <h4>ルール・制度の<br>最新情報提供</h4>
+          <p>常に変わるカード会社のルールや制度について、最新情報をアップデート</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" /></svg>
+          </div>
+          <h4>継続的な見直しと<br>戦略アップデート</h4>
+          <p>状況の変化に合わせて、継続的に戦略を見直しアドバイスします</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 Testimonials -->
+  <section class="section" id="voice">
+    <div class="section-inner fade-in">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="section-number">07</div>
+        <div class="section-label" style="justify-content:center;">VOICE</div>
+        <h2 class="section-title">読者・相談者の声</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">海外赴任が決まり、不安が自信に変わりました。何もわからない状態から、カードの発行の流れ、相談できるだけでも心強いです。</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">K</div>
+            <div class="testimonial-author-info">
+              <div class="name">K.S さん</div>
+              <div class="detail">30代・男性（赴任予定）</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">ホテル関連の価値が何倍にも広がりました。ポイントの使い方ひとつで、旅行の質が劇的に変わることを実感しています。</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div class="testimonial-author-info">
+              <div class="name">M.T さん</div>
+              <div class="detail">40代・女性（在米5年）</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">複雑なルールをわかりやすく整理してくれました。ポイントの制度は複雑ですが、自分に合った戦略が明確になりました。</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">T</div>
+            <div class="testimonial-author-info">
+              <div class="name">T.H さん</div>
+              <div class="detail">30代・男性（在米2年）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 Comparison -->
+  <section class="section bg-cream" id="comparison">
+    <div class="section-inner fade-in">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="section-number">08</div>
+        <div class="section-label" style="justify-content:center;">COMPARISON</div>
+        <h2 class="section-title">他サービスとの違い</h2>
+      </div>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>比較項目</th>
+            <th class="highlight">Elite Points Academy</th>
+            <th>一般的なブログ・SNS</th>
+            <th>他コンサルサービス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Amex・Chase両方の実績</td>
+            <td class="highlight"><span class="check">&#10003;</span></td>
+            <td>片方のみが多い</td>
+            <td>限定的</td>
+          </tr>
+          <tr>
+            <td>SSNなしからの攻略メソッド</td>
+            <td class="highlight"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&mdash;</span></td>
+            <td>一部対応</td>
+          </tr>
+          <tr>
+            <td>個別状況に合わせた戦略</td>
+            <td class="highlight"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&mdash;</span></td>
+            <td><span class="check">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>アフィリエイトリンクなしの中立性</td>
+            <td class="highlight"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&mdash;</span></td>
+            <td>不明</td>
+          </tr>
+          <tr>
+            <td>年間100万ポイント規模の実践実績</td>
+            <td class="highlight"><span class="check">&#10003;</span></td>
+            <td>不明</td>
+            <td>不明</td>
+          </tr>
+          <tr>
+            <td>継続的なルール更新のフォロー</td>
+            <td class="highlight"><span class="check">&#10003;</span></td>
+            <td>自己責任</td>
+            <td>一部あり</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 09 FAQ -->
+  <section class="section" id="faq">
+    <div class="section-inner fade-in">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="section-number">09</div>
+        <div class="section-label" style="justify-content:center;">FAQ</div>
+        <h2 class="section-title">よくある質問</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">米国に住んだことがなくてもカードを作れますか？</div>
+          <div class="faq-answer"><div class="faq-answer-inner">はい、SSNがなくても米国クレジットカードを取得する方法があります。日本のAmex実績を活用したGlobal Transferなど、在米歴ゼロの方でも実践できる戦略があります。John自身がその実例です。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">相談はどのような形式で行われますか？</div>
+          <div class="faq-answer"><div class="faq-answer-inner">オンライン（Zoom）での個別相談です。初回ヒアリングで現状と目標をお伺いし、あなた専用の戦略プランをご提案します。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">カードの審査・発行を保証するものですか？</div>
+          <div class="faq-answer"><div class="faq-answer-inner">いいえ、カードの審査・発行を保証するものではありません。あくまで戦略のアドバイスとサポートを提供するサービスです。最終的な審査はカード会社の判断となります。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">金融商品の仲介やアフィリエイトですか？</div>
+          <div class="faq-answer"><div class="faq-answer-inner">いいえ、金融商品の仲介ではなく、ポイ活のアドバイスサービスです。アフィリエイトリンクなしで、独力で実現可能な手法を実績からアドバイスします。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">英語が不安ですが大丈夫ですか？</div>
+          <div class="faq-answer"><div class="faq-answer-inner">場合によっては言語の壁を超えるサポートも行います。手続き上の英語についてもフォローしますので、ご安心ください。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 Closing CTA -->
+  <section class="closing" id="contact">
+    <div class="fade-in">
+      <h2>あなたの状況に合わせた、<br>最適な戦略を一緒に考えます。</h2>
+      <p>まずは無料のヒアリングから。お気軽にご相談ください。</p>
+      <a href="#" class="btn-cta btn-cta-gold">個別相談を申し込む <span>&rarr;</span></a>
+      <div class="cta-notes">
+        <span>オンライン（Zoom）で実施</span>
+        <span>初回ヒアリングで方向性を整理</span>
+        <span>無理な勧誘は一切ありません</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal -->
+  <section class="legal">
+    <div class="legal-inner">
+      <h4>ご安心ください（法令遵守のご案内）</h4>
+      <div class="legal-items">
+        <div class="legal-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span>カードの審査・発行を保証するものではありません</span>
+        </div>
+        <div class="legal-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span>書面や提案についての責任は負いかねます</span>
+        </div>
+        <div class="legal-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span>法令・規約を遵守した情報提供・サポートです</span>
+        </div>
+        <div class="legal-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span>状況によりご提案内容が変わる可能性があります</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Elite Points Academy. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Password gate
+    const CORRECT_PW = 'elite2026';
+    function checkPw() {
+      const input = document.getElementById('pwInput').value;
+      if (input === CORRECT_PW) {
+        document.getElementById('pwGate').classList.add('hidden');
+        sessionStorage.setItem('lp1_auth', '1');
+      } else {
+        document.getElementById('pwError').style.display = 'block';
+        document.getElementById('pwInput').value = '';
+      }
+    }
+    if (sessionStorage.getItem('lp1_auth') === '1') {
+      document.getElementById('pwGate').classList.add('hidden');
+    }
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('active');
+    }
+
+    // FAQ accordion
+    function toggleFaq(el) {
+      el.parentElement.classList.toggle('active');
+    }
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
