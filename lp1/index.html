@@ -346,8 +346,9 @@
     @media (max-width: 1024px) {
       .nav a:not(.btn-header) { display: none; }
       .hamburger { display: flex; }
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
       .hero-text h1 { font-size: 2rem; }
+      .hero-photo { max-height: 400px; aspect-ratio: 3/2; margin: 0 auto; }
       .story-grid { grid-template-columns: 1fr; gap: 32px; }
       .achievement-grid { grid-template-columns: 1fr; }
       .journey-row { grid-template-columns: repeat(2, 1fr); gap: 32px; }
@@ -355,20 +356,65 @@
       .journey-arrow { display: none; }
     }
     @media (max-width: 768px) {
-      .header-inner { height: 60px; padding: 0 20px; }
-      .mobile-menu { top: 60px; }
-      .hero { margin-top: 60px; min-height: auto; }
-      .hero-inner { padding: 48px 20px; }
-      .hero-text h1 { font-size: 1.7rem; }
-      .section { padding: 56px 20px; }
-      .section-title { font-size: 1.3rem; }
-      .journey-row { grid-template-columns: 1fr 1fr; }
-      .voice-cards { grid-template-columns: 1fr; }
-      .support-grid { grid-template-columns: 1fr; }
-      .achievement-photos { grid-template-columns: 1fr 1fr; }
-      .legal-items { grid-template-columns: 1fr 1fr; }
+      .header-inner { height: 56px; padding: 0 16px; }
+      .logo { font-size: 0.88rem; }
+      .logo small { font-size: 0.55rem; }
+      .mobile-menu { top: 56px; }
+      .hero { margin-top: 56px; min-height: auto; }
+      .hero-inner { padding: 40px 16px; gap: 24px; }
+      .hero-text h1 { font-size: 1.5rem; margin-bottom: 16px; }
+      .hero-text p { font-size: 0.85rem; line-height: 1.8; margin-bottom: 24px; }
+      .btn-cta { padding: 12px 24px; font-size: 0.82rem; }
+      .hero-photo { max-height: 320px; aspect-ratio: 4/3; }
+      .section { padding: 48px 16px; }
+      .section-num { font-size: 1.6rem; }
+      .section-title { font-size: 1.2rem; margin-bottom: 14px; }
+      .section-label { font-size: 0.65rem; }
+      .story-content h3 { font-size: 1.2rem; }
+      .story-content p { font-size: 0.82rem; }
+      .story-image img { aspect-ratio: 16/10; }
+      .journey-row { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .journey-icon { width: 56px; height: 56px; }
+      .journey-icon svg { width: 22px; height: 22px; }
+      .journey-item h4 { font-size: 0.78rem; }
+      .journey-item p { font-size: 0.7rem; }
+      .achievement-text h3 { font-size: 1.2rem; }
+      .achievement-list li { font-size: 0.82rem; }
+      .achievement-photos { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .achievement-photo-label h5 { font-size: 0.7rem; }
+      .achievement-photo-label p { font-size: 0.6rem; }
+      .btn-profile { font-size: 0.78rem; padding: 8px 18px; }
+      .voice-card { min-width: 280px; max-width: 300px; padding: 24px 18px; }
+      .voice-card h4 { font-size: 0.82rem; }
+      .voice-card p { font-size: 0.75rem; }
+      .support-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .support-card { padding: 20px 14px; }
+      .support-icon { width: 44px; height: 44px; }
+      .support-icon svg { width: 20px; height: 20px; }
+      .support-card h4 { font-size: 0.78rem; }
+      .support-card p { font-size: 0.72rem; }
+      .cta-section { padding: 48px 16px; }
+      .cta-section h2 { font-size: 1.15rem; }
+      .btn-gold { padding: 14px 32px; font-size: 0.88rem; }
       .cta-notes { flex-direction: column; gap: 6px; align-items: center; }
-      .cta-section h2 { font-size: 1.3rem; }
+      .cta-notes span { font-size: 0.68rem; }
+      .legal { padding: 24px 16px; }
+      .legal-items { grid-template-columns: 1fr; gap: 10px; }
+      .legal-item { font-size: 0.68rem; }
+      .floating-cta { bottom: 16px; right: 16px; }
+      .floating-cta-btn { padding: 14px 24px; font-size: 0.88rem; }
+      .floating-cta-btn svg { width: 18px; height: 18px; }
+    }
+    @media (max-width: 480px) {
+      .hero-text h1 { font-size: 1.3rem; }
+      .hero-photo { max-height: 260px; }
+      .section { padding: 40px 14px; }
+      .section-title { font-size: 1.1rem; }
+      .journey-row { grid-template-columns: 1fr; gap: 24px; }
+      .journey-icon { width: 64px; height: 64px; }
+      .achievement-photos { grid-template-columns: 1fr; }
+      .support-grid { grid-template-columns: 1fr; }
+      .cta-section h2 { font-size: 1.05rem; }
     }
 
     /* ===== Floating CTA ===== */
