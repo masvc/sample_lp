@@ -373,24 +373,25 @@
 
     /* ===== Floating CTA ===== */
     .floating-cta {
-      position: fixed; bottom: 24px; right: 24px; z-index: 90;
+      position: fixed; bottom: 28px; right: 28px; z-index: 90;
       opacity: 0; transform: translateY(20px); pointer-events: none;
       transition: opacity 0.4s, transform 0.4s;
     }
     .floating-cta.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .floating-cta.modal-open { opacity: 0; pointer-events: none; }
     .floating-cta-btn {
-      display: flex; align-items: center; gap: 10px;
-      padding: 14px 28px; background: var(--gold); color: var(--white);
-      border-radius: 50px; font-size: 0.88rem; font-weight: 600;
+      display: flex; align-items: center; gap: 12px;
+      padding: 20px 36px; background: var(--gold); color: var(--white);
+      border-radius: 50px; font-size: 1.05rem; font-weight: 600;
       box-shadow: 0 8px 32px rgba(184,150,78,0.4);
       cursor: pointer; border: none; font-family: var(--font-sans);
-      transition: all 0.3s;
+      transition: all 0.3s; position: relative;
     }
     .floating-cta-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(184,150,78,0.5); }
-    .floating-cta-btn svg { width: 18px; height: 18px; }
+    .floating-cta-btn svg { width: 22px; height: 22px; }
     .floating-cta-pulse {
       position: absolute; top: -4px; right: -4px;
-      width: 12px; height: 12px; background: #dc2626; border-radius: 50%;
+      width: 14px; height: 14px; background: #dc2626; border-radius: 50%;
       border: 2px solid var(--white);
     }
     .floating-cta-pulse::after {
@@ -401,6 +402,105 @@
     @keyframes pulse-ring {
       0% { transform: scale(1); opacity: 1; }
       100% { transform: scale(2); opacity: 0; }
+    }
+
+    /* ===== Chat Modal ===== */
+    .chat-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
+      display: none; align-items: flex-end; justify-content: flex-end;
+      padding: 28px;
+    }
+    .chat-overlay.active { display: flex; }
+    .chat-modal {
+      width: 420px; max-height: 680px; background: var(--white);
+      border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      display: flex; flex-direction: column; overflow: hidden;
+      animation: chat-slide-up 0.3s ease;
+    }
+    @keyframes chat-slide-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chat-header {
+      background: var(--green-dark); color: var(--white);
+      padding: 20px 24px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .chat-header-info { display: flex; align-items: center; gap: 12px; }
+    .chat-header-avatar {
+      width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 600;
+    }
+    .chat-header-name { font-size: 0.92rem; font-weight: 600; }
+    .chat-header-status { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+    .chat-close {
+      background: none; border: none; color: rgba(255,255,255,0.6);
+      font-size: 1.4rem; cursor: pointer; padding: 4px; transition: color 0.2s;
+    }
+    .chat-close:hover { color: var(--white); }
+    .chat-body {
+      flex: 1; overflow-y: auto; padding: 20px; display: flex;
+      flex-direction: column; gap: 16px; background: var(--gray-50);
+    }
+    .chat-msg {
+      max-width: 85%; padding: 12px 16px; border-radius: 12px;
+      font-size: 0.85rem; line-height: 1.7;
+    }
+    .chat-msg.bot {
+      background: var(--white); color: var(--gray-700);
+      border: 1px solid var(--gray-200); align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-msg.user {
+      background: var(--green-dark); color: var(--white);
+      align-self: flex-end; border-bottom-right-radius: 4px;
+    }
+    .chat-input-area {
+      padding: 16px 20px; border-top: 1px solid var(--gray-200); background: var(--white);
+    }
+    .chat-input-row {
+      display: flex; gap: 8px; align-items: center;
+    }
+    .chat-input {
+      flex: 1; padding: 10px 14px; border: 1.5px solid var(--gray-200);
+      border-radius: 8px; font-size: 0.88rem; font-family: var(--font-sans);
+      outline: none; transition: border-color 0.2s;
+    }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--gold);
+      border: none; color: var(--white); cursor: pointer; display: flex;
+      align-items: center; justify-content: center; transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .chat-send:hover { background: var(--gold-light); }
+    .chat-send svg { width: 18px; height: 18px; }
+    .chat-options { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .chat-option-btn {
+      padding: 8px 16px; border: 1.5px solid var(--green-dark); border-radius: 20px;
+      background: var(--white); color: var(--green-dark); font-size: 0.8rem;
+      font-weight: 500; cursor: pointer; font-family: var(--font-sans); transition: all 0.2s;
+    }
+    .chat-option-btn:hover { background: var(--green-dark); color: var(--white); }
+    .chat-calendar {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+      margin-top: 8px;
+    }
+    .chat-calendar .day-header {
+      font-size: 0.65rem; color: var(--gray-400); text-align: center;
+      padding: 4px; font-weight: 600;
+    }
+    .chat-calendar .day {
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; border-radius: 8px; cursor: pointer; transition: all 0.2s;
+      color: var(--gray-700);
+    }
+    .chat-calendar .day:hover { background: var(--green-pale); }
+    .chat-calendar .day.disabled { color: var(--gray-300); pointer-events: none; }
+    .chat-calendar .day.selected { background: var(--green-dark); color: var(--white); }
+    @media (max-width: 768px) {
+      .chat-overlay { padding: 0; align-items: stretch; justify-content: stretch; }
+      .chat-modal { width: 100%; max-height: 100%; border-radius: 0; }
     }
 
     /* ===== Animations ===== */
@@ -570,7 +670,7 @@
             </div>
           </div>
           <div class="achievement-photo">
-            <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144a?w=600&q=80" alt="情報の整理と発信">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80" alt="情報の整理と発信">
             <div class="achievement-photo-label">
               <h5>情報の整理と発信</h5>
               <p>実績をもとに、分かりやすく情報を発信。</p>
@@ -752,11 +852,33 @@
 
   <!-- Floating CTA -->
   <div class="floating-cta" id="floatingCta">
-    <a href="#cta" class="floating-cta-btn">
+    <button class="floating-cta-btn" onclick="openChat()">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
       個別相談を申し込む
       <span class="floating-cta-pulse"></span>
-    </a>
+    </button>
+  </div>
+
+  <!-- Chat Modal -->
+  <div class="chat-overlay" id="chatOverlay" onclick="if(event.target===this)closeChat()">
+    <div class="chat-modal">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-header-avatar">J</div>
+          <div>
+            <div class="chat-header-name">John - 個別相談予約</div>
+            <div class="chat-header-status">通常24時間以内に返信</div>
+          </div>
+        </div>
+        <button class="chat-close" onclick="closeChat()">&times;</button>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <!-- Messages will be injected by JS -->
+      </div>
+      <div class="chat-input-area" id="chatInputArea">
+        <!-- Input will change per step -->
+      </div>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -796,6 +918,151 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ===== Chat Modal =====
+    let chatStep = 0;
+    let chatData = { name: '', contact: '', date: '', time: '' };
+    const chatBody = document.getElementById('chatBody');
+    const chatInputArea = document.getElementById('chatInputArea');
+
+    function openChat() {
+      document.getElementById('chatOverlay').classList.add('active');
+      floatingCta.classList.add('modal-open');
+      chatStep = 0;
+      chatData = { name: '', contact: '', date: '', time: '' };
+      chatBody.innerHTML = '';
+      nextStep();
+    }
+    function closeChat() {
+      document.getElementById('chatOverlay').classList.remove('active');
+      floatingCta.classList.remove('modal-open');
+    }
+
+    function addMsg(text, type, delay) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          const div = document.createElement('div');
+          div.className = 'chat-msg ' + type;
+          div.innerHTML = text;
+          chatBody.appendChild(div);
+          chatBody.scrollTop = chatBody.scrollHeight;
+          resolve();
+        }, delay || 0);
+      });
+    }
+
+    async function nextStep() {
+      if (chatStep === 0) {
+        await addMsg('はじめまして！<br>Johnの個別相談予約へようこそ。', 'bot', 300);
+        await addMsg('まずはお名前を教えていただけますか？', 'bot', 800);
+        chatInputArea.innerHTML = `
+          <div class="chat-input-row">
+            <input class="chat-input" id="chatField" placeholder="お名前" onkeydown="if(event.key==='Enter')submitStep()">
+            <button class="chat-send" onclick="submitStep()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg></button>
+          </div>`;
+        chatStep = 1;
+      } else if (chatStep === 2) {
+        await addMsg(`${chatData.name}さん、ありがとうございます！`, 'bot', 300);
+        await addMsg('ご連絡先（メールまたはLINE ID）を教えてください。', 'bot', 800);
+        chatInputArea.innerHTML = `
+          <div class="chat-input-row">
+            <input class="chat-input" id="chatField" placeholder="メールアドレス or LINE ID" onkeydown="if(event.key==='Enter')submitStep()">
+            <button class="chat-send" onclick="submitStep()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg></button>
+          </div>`;
+        chatStep = 3;
+      } else if (chatStep === 4) {
+        await addMsg('ありがとうございます！<br>ご希望の相談日を選んでください。', 'bot', 300);
+        renderCalendar();
+        chatStep = 5;
+      } else if (chatStep === 6) {
+        await addMsg('ご希望の時間帯を選んでください。', 'bot', 300);
+        chatInputArea.innerHTML = `
+          <div class="chat-options">
+            <button class="chat-option-btn" onclick="selectTime('10:00')">10:00</button>
+            <button class="chat-option-btn" onclick="selectTime('11:00')">11:00</button>
+            <button class="chat-option-btn" onclick="selectTime('13:00')">13:00</button>
+            <button class="chat-option-btn" onclick="selectTime('14:00')">14:00</button>
+            <button class="chat-option-btn" onclick="selectTime('15:00')">15:00</button>
+            <button class="chat-option-btn" onclick="selectTime('19:00')">19:00</button>
+            <button class="chat-option-btn" onclick="selectTime('20:00')">20:00</button>
+          </div>`;
+        chatStep = 7;
+      } else if (chatStep === 8) {
+        await addMsg('予約内容を確認します。', 'bot', 300);
+        await addMsg(`<strong>お名前:</strong> ${chatData.name}<br><strong>連絡先:</strong> ${chatData.contact}<br><strong>日時:</strong> ${chatData.date} ${chatData.time}`, 'bot', 600);
+        await addMsg('こちらの内容でよろしいですか？', 'bot', 800);
+        chatInputArea.innerHTML = `
+          <div class="chat-options" style="justify-content:center;">
+            <button class="chat-option-btn" onclick="confirmBooking()" style="background:var(--green-dark);color:var(--white);border-color:var(--green-dark);padding:10px 32px;">予約を確定する</button>
+            <button class="chat-option-btn" onclick="openChat()">やり直す</button>
+          </div>`;
+        chatStep = 9;
+      }
+    }
+
+    function submitStep() {
+      const field = document.getElementById('chatField');
+      if (!field || !field.value.trim()) return;
+      const val = field.value.trim();
+
+      if (chatStep === 1) {
+        chatData.name = val;
+        addMsg(val, 'user', 0);
+        chatStep = 2;
+        nextStep();
+      } else if (chatStep === 3) {
+        chatData.contact = val;
+        addMsg(val, 'user', 0);
+        chatStep = 4;
+        nextStep();
+      }
+    }
+
+    function renderCalendar() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth();
+      const today = now.getDate();
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const monthNames = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+      let html = `<div style="text-align:center;font-size:0.85rem;font-weight:600;margin-bottom:8px;">${year}年 ${monthNames[month]}</div>`;
+      html += '<div class="chat-calendar">';
+      ['日','月','火','水','木','金','土'].forEach(d => { html += `<div class="day-header">${d}</div>`; });
+      for (let i = 0; i < firstDay; i++) html += '<div class="day disabled"></div>';
+      for (let d = 1; d <= daysInMonth; d++) {
+        const disabled = d <= today + 1 ? ' disabled' : '';
+        html += `<div class="day${disabled}" onclick="selectDate(this, ${year}, ${month+1}, ${d})">${d}</div>`;
+      }
+      html += '</div>';
+      chatInputArea.innerHTML = html;
+    }
+
+    function selectDate(el, y, m, d) {
+      document.querySelectorAll('.chat-calendar .day').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+      chatData.date = `${y}/${m}/${d}`;
+      addMsg(`${chatData.date}`, 'user', 0);
+      chatStep = 6;
+      setTimeout(() => nextStep(), 400);
+    }
+
+    function selectTime(t) {
+      chatData.time = t;
+      addMsg(t, 'user', 0);
+      chatStep = 8;
+      setTimeout(() => nextStep(), 400);
+    }
+
+    function confirmBooking() {
+      addMsg('予約を確定しました！', 'user', 0);
+      addMsg(`${chatData.name}さん、ご予約ありがとうございます！<br><br>${chatData.date} ${chatData.time}にオンライン（Zoom）でお待ちしております。<br><br>詳細はご連絡先にお送りします。`, 'bot', 500);
+      chatInputArea.innerHTML = `
+        <div style="text-align:center;padding:8px;">
+          <button class="chat-option-btn" onclick="closeChat()" style="background:var(--green-dark);color:var(--white);border-color:var(--green-dark);padding:10px 32px;">閉じる</button>
+        </div>`;
+    }
   </script>
 
 </body>
