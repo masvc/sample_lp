@@ -390,6 +390,10 @@
       .voice-card h4 { font-size: 0.82rem; }
       .voice-card p { font-size: 0.75rem; }
       .support-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .problem-grid, .value-grid-custom { grid-template-columns: 1fr !important; }
+      .comparison-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-right: -16px; padding-right: 16px; }
+      .comparison-wrap table { min-width: 520px; font-size: 0.75rem; }
+      .consultation-steps { grid-template-columns: 1fr !important; }
       .support-card { padding: 20px 14px; }
       .support-icon { width: 44px; height: 44px; }
       .support-icon svg { width: 20px; height: 20px; }
@@ -417,6 +421,8 @@
       .achievement-photos { grid-template-columns: 1fr; }
       .support-grid { grid-template-columns: 1fr; }
       .cta-section h2 { font-size: 1.05rem; }
+      .problem-grid, .value-grid-custom { grid-template-columns: 1fr !important; }
+      .consultation-steps { grid-template-columns: 1fr !important; }
     }
 
     /* ===== Chat Widget (always visible, bottom-right) ===== */
@@ -644,7 +650,7 @@
         <div class="section-label">PROBLEM</div>
       </div>
       <h2 class="section-title">こんな課題やリスク、<br>心当たりはありませんか？</h2>
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;">
+      <div class="problem-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;">
         <div style="padding:24px; background:var(--white); border-radius:8px; border:1px solid var(--gray-200);">
           <h4 style="font-size:0.92rem; font-weight:600; margin-bottom:8px; color:var(--gray-800);">日本のアメックスに不便を感じる</h4>
           <p style="font-size:0.82rem; color:var(--gray-500); line-height:1.8;">海外でのカード利用での手数料や、ステータスカードの活用に限界を感じている。</p>
@@ -716,7 +722,7 @@
         <div class="section-label">VALUE</div>
       </div>
       <h2 class="section-title">得られる未来・成果を具体化</h2>
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;">
+      <div class="value-grid-custom" style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;">
         <div style="padding:28px; background:var(--green-dark); border-radius:8px; color:var(--white);">
           <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:8px;">ビジネスクラスでの移動</h4>
           <p style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.8;">ポイント活用で、普段は手が出ないビジネスクラスも現実的に。移動の体験が大きく変わります。</p>
@@ -918,7 +924,7 @@
         <div class="section-label">COMPARISON</div>
       </div>
       <h2 class="section-title" style="text-align:center;">他サービスとの違い・選ばれる理由</h2>
-      <table style="width:100%; border-collapse:collapse; font-size:0.85rem; background:var(--white); border-radius:8px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.06); margin-top:32px;">
+      <div class="comparison-wrap"><table style="width:100%; border-collapse:collapse; font-size:0.85rem; background:var(--white); border-radius:8px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.06); margin-top:32px;">
         <thead>
           <tr>
             <th style="padding:14px 16px; background:var(--green-dark); color:var(--white); font-weight:600; text-align:left;">比較項目</th>
@@ -934,7 +940,7 @@
           <tr><td style="padding:12px 16px; border-bottom:1px solid var(--gray-100); font-weight:500;">アフィリエイトなしの中立性</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); background:var(--gold-pale); font-weight:600; color:var(--green-dark);">&#10003;</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); color:var(--gray-300);">&mdash;</td><td style="padding:12px; text-align:center; border-bottom:1px solid var(--gray-100); color:var(--gray-400);">不明</td></tr>
           <tr><td style="padding:12px 16px; font-weight:500;">継続的なルール更新フォロー</td><td style="padding:12px; text-align:center; background:var(--gold-pale); font-weight:600; color:var(--green-dark);">&#10003;</td><td style="padding:12px; text-align:center; color:var(--gray-300);">自己責任</td><td style="padding:12px; text-align:center; color:var(--gray-400);">一部</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
   </section>
 
@@ -980,7 +986,7 @@
       </div>
       <h2 class="section-title">面談のご案内</h2>
       <p style="font-size:0.88rem; color:var(--gray-500); line-height:1.9; margin-bottom:32px;">まずはオンラインで現状をお聞かせください。<br>あなたの状況に合った最適な戦略の方向性を、一緒に整理します。</p>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; text-align:center; margin-bottom:32px;">
+      <div class="consultation-steps" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; text-align:center; margin-bottom:32px;">
         <div style="padding:24px 16px; background:var(--white); border-radius:8px; border:1px solid var(--gray-200);">
           <div style="font-size:1.5rem; margin-bottom:8px;">1</div>
           <h4 style="font-size:0.88rem; font-weight:600; margin-bottom:6px;">ヒアリング</h4>
