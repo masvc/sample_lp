@@ -236,14 +236,25 @@
     .achievement-photo-label h5 { font-size: 0.78rem; font-weight: 600; margin-bottom: 2px; }
     .achievement-photo-label p { font-size: 0.68rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
 
-    /* ===== 04 Voice ===== */
+    /* ===== 04 Voice (Carousel) ===== */
     .voice-section { background: var(--gray-100); }
-    .voice-cards {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    .voice-carousel-wrap {
+      overflow: hidden; position: relative;
+    }
+    .voice-carousel-track {
+      display: flex; gap: 24px;
+      animation: voice-scroll 40s linear infinite;
+      width: max-content;
+    }
+    .voice-carousel-track:hover { animation-play-state: paused; }
+    @keyframes voice-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
     .voice-card {
       background: var(--white); border-radius: 8px; padding: 32px 24px;
       text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      min-width: 320px; max-width: 360px; flex-shrink: 0;
     }
     .voice-card h4 {
       font-size: 0.92rem; font-weight: 600; margin-bottom: 12px;
@@ -258,13 +269,6 @@
       font-size: 1rem; color: var(--green-dark);
     }
     .voice-meta { font-size: 0.75rem; color: var(--gray-400); }
-    .voice-dots {
-      display: flex; justify-content: center; gap: 8px; margin-top: 32px;
-    }
-    .voice-dot {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--gray-300);
-    }
-    .voice-dot.active { background: var(--green-dark); }
 
     /* ===== 05 Support ===== */
     .support-grid {
@@ -365,6 +369,38 @@
       .legal-items { grid-template-columns: 1fr 1fr; }
       .cta-notes { flex-direction: column; gap: 6px; align-items: center; }
       .cta-section h2 { font-size: 1.3rem; }
+    }
+
+    /* ===== Floating CTA ===== */
+    .floating-cta {
+      position: fixed; bottom: 24px; right: 24px; z-index: 90;
+      opacity: 0; transform: translateY(20px); pointer-events: none;
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .floating-cta.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .floating-cta-btn {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 28px; background: var(--gold); color: var(--white);
+      border-radius: 50px; font-size: 0.88rem; font-weight: 600;
+      box-shadow: 0 8px 32px rgba(184,150,78,0.4);
+      cursor: pointer; border: none; font-family: var(--font-sans);
+      transition: all 0.3s;
+    }
+    .floating-cta-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(184,150,78,0.5); }
+    .floating-cta-btn svg { width: 18px; height: 18px; }
+    .floating-cta-pulse {
+      position: absolute; top: -4px; right: -4px;
+      width: 12px; height: 12px; background: #dc2626; border-radius: 50%;
+      border: 2px solid var(--white);
+    }
+    .floating-cta-pulse::after {
+      content: ''; position: absolute; inset: -4px;
+      border-radius: 50%; border: 2px solid #dc2626;
+      animation: pulse-ring 2s ease-out infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
     }
 
     /* ===== Animations ===== */
@@ -520,7 +556,7 @@
             </div>
           </div>
           <div class="achievement-photo">
-            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&q=80" alt="ビジネスクラス">
+            <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=600&q=80" alt="ビジネスクラス">
             <div class="achievement-photo-label">
               <h5>ビジネスクラスの体験</h5>
               <p>ポイント活用で、ビジネスクラスも現実的に。</p>
@@ -534,7 +570,7 @@
             </div>
           </div>
           <div class="achievement-photo">
-            <img src="https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=600&q=80" alt="情報の整理と発信">
+            <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144a?w=600&q=80" alt="情報の整理と発信">
             <div class="achievement-photo-label">
               <h5>情報の整理と発信</h5>
               <p>実績をもとに、分かりやすく情報を発信。</p>
@@ -553,37 +589,70 @@
         <div class="section-label">VOICE</div>
       </div>
       <h2 class="section-title" style="text-align:center;">読者・相談者の声</h2>
-      <div class="voice-cards" style="margin-top: 36px;">
-        <div class="voice-card">
-          <div class="voice-avatar">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+      <div class="voice-carousel-wrap" style="margin-top: 36px;">
+        <div class="voice-carousel-track">
+          <div class="voice-card">
+            <div class="voice-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg></div>
+            <h4>海外赴任が決まり、<br>不安が自信に変わりました</h4>
+            <p>何もわからない状態から、カードの発行の流れ、相談できるだけでも心強いです。</p>
+            <div class="voice-meta">30代・男性（赴任予定）</div>
           </div>
-          <h4>海外赴任が決まり、<br>不安が自信に変わりました</h4>
-          <p>何もわからない状態から、カードの発行の流れ、相談できるだけでも心強いです。</p>
-          <div class="voice-meta">30代・男性（赴任予定）</div>
-        </div>
-        <div class="voice-card">
-          <div class="voice-avatar">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+          <div class="voice-card">
+            <div class="voice-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg></div>
+            <h4>ホテル関連の価値が<br>何倍にも広がりました</h4>
+            <p>ポイントの使い方ひとつで、旅行の質が劇的に変わることを実感しています。</p>
+            <div class="voice-meta">40代・女性（在米5年）</div>
           </div>
-          <h4>ホテル関連の価値が<br>何倍にも広がりました</h4>
-          <p>ポイントの使い方ひとつで、旅行の質が劇的に変わることを実感しています。</p>
-          <div class="voice-meta">40代・女性（在米5年）</div>
-        </div>
-        <div class="voice-card">
-          <div class="voice-avatar">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+          <div class="voice-card">
+            <div class="voice-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg></div>
+            <h4>複雑なルールを<br>わかりやすく整理してくれました</h4>
+            <p>ポイントの制度は複雑ですが、自分に合った戦略が明確になりました。</p>
+            <div class="voice-meta">30代・男性（在米2年）</div>
           </div>
-          <h4>複雑なルールを<br>わかりやすく整理してくれました</h4>
-          <p>ポイントの制度は複雑ですが、自分に合った戦略が明確になりました。</p>
-          <div class="voice-meta">30代・男性（在米2年）</div>
+          <div class="voice-card">
+            <div class="voice-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg></div>
+            <h4>Amexの申請から活用まで<br>全部サポートしてもらえた</h4>
+            <p>自分一人では絶対にたどり着けなかった。手順が明確で安心感がありました。</p>
+            <div class="voice-meta">40代・男性（駐在3年）</div>
+          </div>
+          <div class="voice-card">
+            <div class="voice-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg></div>
+            <h4>家族旅行の質が<br>劇的に向上しました</h4>
+            <p>ポイントでビジネスクラスと高級ホテルを予約。家族全員が大満足でした。</p>
+            <div class="voice-meta">30代・女性（在米4年）</div>
+          </div>
+          <!-- 複製（無限ループ用） -->
+          <div class="voice-card">
+            <div class="voice-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg></div>
+            <h4>海外赴任が決まり、<br>不安が自信に変わりました</h4>
+            <p>何もわからない状態から、カードの発行の流れ、相談できるだけでも心強いです。</p>
+            <div class="voice-meta">30代・男性（赴任予定）</div>
+          </div>
+          <div class="voice-card">
+            <div class="voice-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg></div>
+            <h4>ホテル関連の価値が<br>何倍にも広がりました</h4>
+            <p>ポイントの使い方ひとつで、旅行の質が劇的に変わることを実感しています。</p>
+            <div class="voice-meta">40代・女性（在米5年）</div>
+          </div>
+          <div class="voice-card">
+            <div class="voice-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg></div>
+            <h4>複雑なルールを<br>わかりやすく整理してくれました</h4>
+            <p>ポイントの制度は複雑ですが、自分に合った戦略が明確になりました。</p>
+            <div class="voice-meta">30代・男性（在米2年）</div>
+          </div>
+          <div class="voice-card">
+            <div class="voice-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg></div>
+            <h4>Amexの申請から活用まで<br>全部サポートしてもらえた</h4>
+            <p>自分一人では絶対にたどり着けなかった。手順が明確で安心感がありました。</p>
+            <div class="voice-meta">40代・男性（駐在3年）</div>
+          </div>
+          <div class="voice-card">
+            <div class="voice-avatar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg></div>
+            <h4>家族旅行の質が<br>劇的に向上しました</h4>
+            <p>ポイントでビジネスクラスと高級ホテルを予約。家族全員が大満足でした。</p>
+            <div class="voice-meta">30代・女性（在米4年）</div>
+          </div>
         </div>
-      </div>
-      <div class="voice-dots">
-        <div class="voice-dot active"></div>
-        <div class="voice-dot"></div>
-        <div class="voice-dot"></div>
-        <div class="voice-dot"></div>
       </div>
     </div>
   </section>
@@ -681,6 +750,15 @@
     </div>
   </section>
 
+  <!-- Floating CTA -->
+  <div class="floating-cta" id="floatingCta">
+    <a href="#cta" class="floating-cta-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
+      個別相談を申し込む
+      <span class="floating-cta-pulse"></span>
+    </a>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2026 Elite Points Academy. All rights reserved.</p>
@@ -702,9 +780,11 @@
       document.getElementById('pwGate').classList.add('hidden');
     }
 
-    // Header scroll
+    // Header scroll + floating CTA
+    const floatingCta = document.getElementById('floatingCta');
     window.addEventListener('scroll', () => {
       document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+      floatingCta.classList.toggle('visible', window.scrollY > 600);
     });
 
     // Mobile menu
